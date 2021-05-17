@@ -75,7 +75,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.patch('/:prodId', async (req, res) => {
+router.put('/:prodId', async (req, res) => {
 
     //validate user inputs
     const { error } = newProductValidation(req.body);
@@ -100,7 +100,8 @@ router.patch('/:prodId', async (req, res) => {
         outofstock: req.body.outofstock,
         tags: req.body.tags,
         active: req.body.active,
-        images: req.body.images
+        images: req.body.images,
+        categories: categoryIds
     };
     try {
 
