@@ -8,6 +8,17 @@ const toId = mongoose.Types.ObjectId;
 
 router.get('/', verify, async (req, res) => {
     try {
+        const allProducts = await Product.find({active: true}).populate( "categories",  { name:1, description:1} );
+        res.json(allProducts);          
+
+    } catch (error) {
+        console.log(error)
+        res.json({message: error});
+    }
+});
+
+router.get('/all', verify, async (req, res) => {
+    try {
         const allProducts = await Product.find({}).populate( "categories",  { name:1, description:1} );
         res.json(allProducts);          
 

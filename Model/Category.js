@@ -7,10 +7,12 @@ const categorySchema = new mongoose.Schema({
         min: 3,
         max: 255
     },
-    parent: {
-        type: mongoose.Types.ObjectId,
-        ref: "Category"
-    },
+    parents: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: "Category"
+        }
+    ],
     description: {
         type: String,
         max: 4096,
